@@ -28,4 +28,11 @@ sqft_living = st.sidebar.slider("Sqft Living", 500, 10000, 2000)
 sqft_above = st.sidebar.slider("Sqft Above", 500, 10000, 1500)
 sqft_basement = st.sidebar.slider("Sqft Basement", 0, 5000, 500)
 view = st.sidebar.slider("View", 0, 4, 0)
-waterfront = st.sidebar.selectbox("Waterfront (1
+waterfront = st.sidebar.selectbox("Waterfront (1=Ya, 0=Tidak)", [0, 1])
+
+# Prediksi
+input_data = [[bedrooms, bathrooms, floors, grade, sqft_living,
+               sqft_above, sqft_basement, view, waterfront]]
+
+prediksi = model.predict(input_data)[0]
+st.success(f"💰 Estimasi harga rumah: ${prediksi:,.0f}")
